@@ -133,10 +133,17 @@
 
     <div id="login-block" style="margin-top:40px;">
         <h2 style="color:rgb(216,135,135);">Авторизація</h2>
-        <input type="text" id="username" placeholder="Логін">
-        <input type="password" id="password" placeholder="Пароль">
-        <button onclick="login()">Увійти</button>
-        <p id="login-message" style="color: crimson;"></p>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 350px; margin: 0 auto;">
+            <input type="text" id="username" placeholder="Логін"
+                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; border: 1px solid #ccc;">
+            <input type="password" id="password" placeholder="Пароль"
+                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; border: 1px solid #ccc;">
+            <button onclick="login()"
+                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; background: rgb(216,135,135); color: white; border: none; cursor: pointer;">
+                Увійти
+            </button>
+            <p id="login-message" style="color: crimson; font-size: 20px;"></p>
+        </div>
     </div>
 
     <div id="auth-content" style="display:none; margin-top:30px;">
