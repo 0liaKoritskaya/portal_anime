@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Anime Website</title>
+    <style>
+        .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: rgb(25, 25, 25);
+        border-bottom: 2px solid crimson;
+        }
+
+        .site-header h1 {
+        color: rgb(216, 135, 135);
+        font-size: 36px;
+        margin: 0;
+        }
+
+        .site-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 20px;
+        transition: color 0.3s;
+        }
+
+        .site-nav a:hover {
+        color: crimson;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 100%;
+            transform-origin: top center;
+        }
+        h1 {
+        margin-bottom: 10px;
+        }
+
+        p.subtitle {
+        margin-top: 0px; 
+        color: rgb(216, 135, 135);
+        font-size: 24px;
+        }
+        h1 {
+            color: rgb(154, 59, 59);
+            font-weight: bold;
+        }
+        p {
+            color: rgb(255, 255, 255);
+        }
+        footer {
+            margin-top: 40px;
+            color: gray;
+        }
+        .flex-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .flex-gallery figure {
+            text-align: center;
+        }
+        .flex-gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+        figcaption {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .comanda7-block {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 30px;
+        margin-left: 50px;
+        padding-left: 150px;
+        }
+
+        .comanda7-block img {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        }
+
+        .comanda7-block .text {
+        color: white;
+        max-width: 500px;
+        text-align: left;
+        font-size: 24px;
+        }
+        .comanda72-block {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 30px;
+        margin-right: 50px;
+        padding-right: 150px;
+        }
+
+        .comanda72-block img {
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        }
+
+        .comanda72-block .text {
+        color: white;
+        max-width: 500px;
+        text-align: left;
+        font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1>🌸 Anime Portal</h1>
+        <nav class="site-nav">
+            <a href="naruto.html">Naruto</a>
+            <a href="fairytail.html">Fairy Tail</a>
+            <a href="aot.html">Atack On Titan</a>
+            <a href="sotte.html">Saga Of Tanya The Evil</a>
+            <a href="index.html">Main Page</a>
+        </nav>
+    </header>
+
+    <div id="login-block" style="margin-top:40px;">
+        <h2 style="color:rgb(216,135,135);">Авторизація</h2>
+        <input type="text" id="username" placeholder="Логін">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="login()">Увійти</button>
+        <p id="login-message" style="color: crimson;"></p>
+    </div>
+
+    <div id="auth-content" style="display:none; margin-top:30px;">
+        <h3 style="color:lightgreen;">Вітаємо, ви авторизовані!</h3>
+        <p style="color:white;">Тут може бути контент для розробників.</p>
+    </div>
+
+    <script>
+        function login() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            if ((user === 'admin1' && pass === '1234') ||
+                (user === 'admin2' && pass === '1263')) {
+                document.getElementById('login-message').style.color = 'green';
+                document.getElementById('login-message').textContent = 'Вхід успішний!';
+                document.getElementById('login-block').style.display = 'none';
+                document.getElementById('auth-content').style.display = 'block';
+            } else {
+                document.getElementById('login-message').style.color = 'crimson';
+                document.getElementById('login-message').textContent = 'Невірний логін або пароль!';
+            }
+        }
+    </script>
+</body>
+</html>
