@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Anime Website</title>
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .site-header {
         display: flex;
@@ -29,12 +31,13 @@
         .site-nav a:hover {
         color: crimson;
         }
-        body {
-            background-color: rgb(0, 0, 0);
-            text-align: center;
-            font-size: 100%;
-            transform-origin: top center;
-        }
+body {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 100%;
+    transform-origin: top center;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
         h1 {
         margin-bottom: 10px;
         }
@@ -75,64 +78,157 @@
             margin-top: 8px;
             font-style: italic;
         }
-        .comanda7-block {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 30px;
-        margin-left: 50px;
-        padding-left: 150px;
+        .search-button {
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
         }
 
-        .comanda7-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
-        }
-
-        .comanda7-block .text {
+        .anime-catalog {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
         color: white;
-        max-width: 500px;
-        text-align: left;
-        font-size: 24px;
+        padding: 16px 0 16px 0;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+        top: 40px;
+        z-index: 100;
+        min-width: 280px;
+        max-width: 320px;
+        text-align: center;
+        transition: opacity 0.2s;
         }
-        .comanda72-block {
+
+        .anime-catalog ul {
+          margin: 0;
+          padding: 0;
+        }
+        .anime-catalog li {
+          padding: 10px 0 10px 0;
+          border-bottom: 1.5px solid crimson;
+          list-style: none;
+        }
+        .anime-catalog li:last-child {
+          border-bottom: none;
+        }
+        .anime-catalog a {
+          color: white !important;
+          text-decoration: none !important;
+          display: block;
+          width: 100%;
+          font-size: 20px;
+          font-family: inherit;
+          line-height: 1.2;
+          margin: 0 auto;
+          padding: 0 8px;
+          box-sizing: border-box;
+          transition: color 0.2s, background 0.2s;
+        }
+        .anime-catalog a:hover {
+          color: crimson !important;
+          background: rgba(255,255,255,0.05);
+        }
+        @media (max-width: 400px) {
+          .anime-catalog {
+            min-width: 180px;
+            max-width: 95vw;
+            padding: 8px 0;
+          }
+          .anime-catalog a {
+            font-size: 16px;
+          }
+        }
+
+        .site-nav {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .site-nav .search-anime-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+        .hero {
+        height: 90vh;
+        background: url('https://i.pinimg.com/originals/2e/a7/eb/2ea7eb4645fa413c2cdd9015039ef5ce.jpg') center/cover no-repeat;
+        position: relative;
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        gap: 30px;
-        margin-right: 50px;
-        padding-right: 150px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         }
 
-        .comanda72-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
+        .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0,0,0,0.5);
         }
 
-        .comanda72-block .text {
+        .hero-content {
+        position: relative;
         color: white;
-        max-width: 500px;
-        text-align: left;
+        z-index: 2;
+        }
+
+        .hero h1 {
+        font-size: 64px;
+        text-shadow: 0 0 12px crimson;
+        margin-bottom: 20px;
+        }
+
+        .hero p {
         font-size: 24px;
+        color: #ddd;
+        margin-bottom: 30px;
+        }
+
+        .hero-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: crimson;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: transform 0.3s;
+        }
+
+        .hero-button:hover {
+        transform: scale(1.05);
         }
     </style>
 </head>
 <body>
     <header class="site-header">
-  <h1>🌸 Anime Portal</h1>
+  <h1>⛩️ Anime Portal</h1>
   <nav class="site-nav">
-  <a href="naruto.html">Naruto</a>
-  <a href="fairytail.html">Fairy Tail</a>
-  <a href="aot.html">Atack On Titan</a>
-  <a href="sotte.html">Saga Of Tanya The Evil</a>
-  <a href="author.html">Authorization</a>
-</nav>
+    <div class="search-anime-wrapper">
+      <a href="#" class="search-button" id="search-anime-btn" tabindex="0" onclick="toggleAnimeCatalog(event)">Search anime</a>
+      <div class="anime-catalog" id="anime-catalog-list" tabindex="0">
+        <ul>
+            <li><a href="naruto.html" style="color:white;text-decoration:none;">Naruto</a></li>
+            <li><a href="fairytail.html" style="color:white;text-decoration:none;">Fairy Tail</a></li>
+            <li><a href="aot.html" style="color:white;text-decoration:none;">Attack On Titan</a></li>
+            <li><a href="sotte.html" style="color:white;text-decoration:none;">Saga Of Tanya The Evil</a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="other.html">Other</a>
+    <a href="author.html">My profile</a>
+  </nav>
 </header>
-    <h1 style="font-size: 80px;">Аніме</h1>
-    <p style="color: rgb(216, 135, 135); font-size: 24px;">Портал у світ аніме!</p>
-
+    <section class="hero">
+  <div class="hero-content">
+    <h1>⛩️ Вітаємо в Anime Portal</h1>
+    <p>Занурся у світ емоцій, битв і легенд</p>
+    <a href="#anime" class="hero-button">Дослідити героїв</a>
+  </div>
+</section>
     <img src="https://img2.akspic.ru/previews/2/0/9/5/6/165902/165902-devochki_prifrontovyh-anime-igry_bilibili-oblako-svet-x750.jpg"
          alt="Anime Image"
          style="max-width: 1200px; height: auto; border-radius: 10px;">
@@ -141,5 +237,19 @@
     <footer>
         <p style="font-size: 20px; color: rgba(179, 182, 185, 0.895);">&copy; 2025 Anime Website</p>
     </footer>
+    <script>
+      function toggleAnimeCatalog(e) {
+        e.preventDefault();
+        const catalog = document.getElementById('anime-catalog-list');
+        catalog.style.display = (catalog.style.display === 'block') ? 'none' : 'block';
+      }
+      document.addEventListener('click', function(event) {
+        const btn = document.getElementById('search-anime-btn');
+        const catalog = document.getElementById('anime-catalog-list');
+        if (!btn.contains(event.target) && !catalog.contains(event.target)) {
+          catalog.style.display = 'none';
+        }
+      });
+    </script>
 </body>
 </html>

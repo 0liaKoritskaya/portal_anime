@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Anime Website</title>
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .site-header {
         display: flex;
@@ -29,12 +31,13 @@
         .site-nav a:hover {
         color: crimson;
         }
-        body {
-            background-color: rgb(0, 0, 0);
-            text-align: center;
-            font-size: 100%;
-            transform-origin: top center;
-        }
+body {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 100%;
+    transform-origin: top center;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
         h1 {
         margin-bottom: 10px;
         }
@@ -75,74 +78,74 @@
             margin-top: 8px;
             font-style: italic;
         }
-        .comanda7-block {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 30px;
-        margin-left: 50px;
-        padding-left: 150px;
+        .search-button {
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
         }
 
-        .comanda7-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
-        }
-
-        .comanda7-block .text {
+        .anime-catalog {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
         color: white;
-        max-width: 500px;
+        padding: 10px 40px 10px 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        top: 40px;
+        z-index: 100;
+        min-width: 220px;
+        max-width: 320px;
         text-align: left;
-        font-size: 24px;
-        }
-        .comanda72-block {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        gap: 30px;
-        margin-right: 50px;
-        padding-right: 150px;
+        transition: opacity 0.2s;
         }
 
-        .comanda72-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
+        .anime-catalog ul {
+          margin: 0;
+          padding: 0;
+        }
+        .anime-catalog li {
+          padding: 8px 0 8px 0;
+          border-bottom: 1.5px solid crimson;
+          list-style: none;
+          word-break: break-word;
+          text-align: center;
+        }
+        .anime-catalog li:last-child {
+          border-bottom: none;
         }
 
-        .comanda72-block .text {
-        color: white;
-        max-width: 500px;
-        text-align: left;
-        font-size: 24px;
+        .site-nav {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .site-nav .search-anime-wrapper {
+          position: relative;
+          display: inline-block;
         }
     </style>
 </head>
 <body>
     <header class="site-header">
-        <h1>🌸 Anime Portal</h1>
-        <nav class="site-nav">
-            <a href="naruto.html">Naruto</a>
-            <a href="fairytail.html">Fairy Tail</a>
-            <a href="aot.html">Atack On Titan</a>
-            <a href="author.html">Authorization</a>
-            <a href="index.html">Main Page</a>
-        </nav>
-    </header>
-
-    <img src="Tanya_von_Degurechaff.png"
-        alt="Anime Image"
-        style="width: auto; max-height: 500px; border-radius: 10px; margin-left: 600px; margin-right: auto; margin-top: 25px;">
-        
-    <script>
-    window.onload = function() {
-        if (localStorage.getItem('isAuth') === 'true') {
-            document.getElementById('dev-functions').style.display = 'block';
-        } else {
-            document.getElementById('dev-functions').style.display = 'none';
-        }
-    }
-    </script>
+        <h1>⛩️ Anime Portal</h1>
+  <nav class="site-nav">
+    <a href="author.html">Authorization</a>
+    <div class="search-anime-wrapper">
+      <a href="#" class="search-button" id="search-anime-btn" tabindex="0" onclick="toggleAnimeCatalog(event)">Search anime</a>
+      <div class="anime-catalog" id="anime-catalog-list" tabindex="0">
+        <ul>
+            <li><a href="naruto.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Naruto</a></li>
+            <li><a href="fairytail.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Fairy Tail</a></li>
+            <li><a href="aot.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Attack On Titan</a></li>
+            <li><a href="sotte.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Saga Of Tanya The Evil</a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="index.html">Home</a>
+  </nav>
 </body>
 </html>

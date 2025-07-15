@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Anime Website</title>
+    <style>
+        .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: rgb(25, 25, 25);
+        border-bottom: 2px solid crimson;
+        }
+
+        .site-header h1 {
+        color: rgb(216, 135, 135);
+        font-size: 36px;
+        margin: 0;
+        }
+
+        .site-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 20px;
+        transition: color 0.3s;
+        }
+
+        .site-nav a:hover {
+        color: crimson;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+
+        }
+        h1 {
+        margin-bottom: 10px;
+        }
+
+        p.subtitle {
+        margin-top: 0px; 
+        color: rgb(216, 135, 135);
+        font-size: 24px;
+        }
+        h1 {
+            color: rgb(154, 59, 59);
+            font-weight: bold;
+        }
+        p {
+            color: rgb(255, 255, 255);
+        }
+        footer {
+            margin-top: 40px;
+            color: gray;
+        }
+        .flex-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .flex-gallery figure {
+            text-align: center;
+        }
+        .flex-gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+        figcaption {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .search-button {
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
+        }
+
+        .anime-catalog {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
+        color: white;
+        padding: 10px 40px 10px 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        top: 40px;
+        z-index: 100;
+        min-width: 220px;
+        max-width: 320px;
+        text-align: left;
+        transition: opacity 0.2s;
+        }
+
+        .anime-catalog ul {
+          margin: 0;
+          padding: 0;
+        }
+        .anime-catalog li {
+          padding: 8px 0 8px 0;
+          border-bottom: 1.5px solid crimson;
+          list-style: none;
+          word-break: break-word;
+          text-align: center;
+        }
+        .anime-catalog li:last-child {
+          border-bottom: none;
+        }
+
+        .site-nav {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .site-nav .search-anime-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+        header {
+      background-color: #191919;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid crimson;
+      }
+      header h1 {
+      font-size: 28px;
+      color: crimson;
+      }
+      nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      }
+     .profile-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+      }
+      .avatar-block {
+      text-align: center;
+      margin-bottom: 40px;
+      }
+      .avatar-block img {
+      border-radius: 50%;
+      width: 150px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      }
+      h2 {
+      color: crimson;
+      margin-top: 20px;
+      }
+    .section-block {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      margin-bottom: 40px;
+    }
+    .section-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .section-block li {
+      padding: 10px 0;
+      border-bottom: 1px solid crimson;
+    }
+    .section-block li:last-child {
+      border-bottom: none;
+    }
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1>⛩ Anime Portal</h1>
+  <nav class="site-nav">
+    <a href="author.html">Authorization</a>
+    <div class="search-anime-wrapper">
+      <a href="#" class="search-button" id="search-anime-btn" tabindex="0" onclick="toggleAnimeCatalog(event)">Search anime</a>
+      <div class="anime-catalog" id="anime-catalog-list" tabindex="0">
+        <ul>
+            <li><a href="naruto.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Naruto</a></li>
+            <li><a href="fairytail.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Fairy Tail</a></li>
+            <li><a href="aot.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Attack On Titan</a></li>
+            <li><a href="sotte.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Saga Of Tanya The Evil</a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="index.html">Home</a>
+  </nav>
+</body>
+</header>
+    <div class="profile-container">
+    <div class="avatar-block">
+      <img src="your-avatar.jpg" alt="Avatar">
+      <h2>Привіт, ***!</h2>
+    </div>
+
+    <div class="section-block">
+      <h3>✅ Переглянуте аніме</h3>
+      <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" id="anime-title" placeholder="Додати аніме..." style="flex:1; padding:6px; border-radius:6px; border:1px solid #333; background:#222; color:#fff;">
+        <button onclick="addAnime()" style="background:crimson; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Додати</button>
+      </div>
+      <ul id="watched-list">
+        <li>Naruto ★★★★★ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Attack On Titan ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Death Note ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+      </ul>
+    </div>
+    <script>
+      function addAnime() {
+        const input = document.getElementById("anime-title");
+        const title = input.value.trim();
+        if (title !== "") {
+          const list = document.getElementById("watched-list");
+          const li = document.createElement("li");
+          li.textContent = title + " ";
+          // Add delete button
+          const btn = document.createElement("button");
+          btn.textContent = "Видалити";
+          btn.style.marginLeft = "10px";
+          btn.style.background = "#333";
+          btn.style.color = "#fff";
+          btn.style.border = "none";
+          btn.style.borderRadius = "4px";
+          btn.style.cursor = "pointer";
+          btn.onclick = function() { removeAnime(btn); };
+          li.appendChild(btn);
+          list.appendChild(li);
+          input.value = "";
+
+          // Save to localStorage
+          let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+          stored.push(title);
+          localStorage.setItem("watchedAnime", JSON.stringify(stored));
+        }
+      }
+
+      function removeAnime(btn) {
+        const li = btn.parentElement;
+        const title = li.firstChild.textContent.trim();
+        li.remove();
+        // Remove from localStorage
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        stored = stored.filter(item => item !== title);
+        localStorage.setItem("watchedAnime", JSON.stringify(stored));
+      }
+
+      // Restore list from localStorage on page load
+      window.addEventListener("DOMContentLoaded", function() {
+        const list = document.getElementById("watched-list");
+        // Remove initial hardcoded items except if localStorage is empty
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        if (stored.length > 0) {
+          list.innerHTML = "";
+          stored.forEach(function(title) {
+            const li = document.createElement("li");
+            li.textContent = title + " ";
+            const btn = document.createElement("button");
+            btn.textContent = "Видалити";
+            btn.style.marginLeft = "10px";
+            btn.style.background = "#333";
+            btn.style.color = "#fff";
+            btn.style.border = "none";
+            btn.style.borderRadius = "4px";
+            btn.style.cursor = "pointer";
+            btn.onclick = function() { removeAnime(btn); };
+            li.appendChild(btn);
+            list.appendChild(li);
+          });
+        } else {
+          // Add delete buttons to initial hardcoded items
+          Array.from(list.children).forEach(function(li) {
+            if (!li.querySelector("button")) {
+              const btn = document.createElement("button");
+              btn.textContent = "Видалити";
+              btn.style.marginLeft = "10px";
+              btn.style.background = "#333";
+              btn.style.color = "#fff";
+              btn.style.border = "none";
+              btn.style.borderRadius = "4px";
+              btn.style.cursor = "pointer";
+              btn.onclick = function() { removeAnime(btn); };
+              li.appendChild(btn);
+            }
+          });
+        }
+      });
+    </script>
+//Переглянуте аніме
+  <div class="section-block">
+      <h3>📌 Заплановано до перегляду</h3>
+      <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" id="anime-title" placeholder="Додати аніме..." style="flex:1; padding:6px; border-radius:6px; border:1px solid #333; background:#222; color:#fff;">
+        <button onclick="addAnime()" style="background:crimson; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Додати</button>
+      </div>
+      <ul id="watched-list">
+        <li>Naruto ★★★★★ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Attack On Titan ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Death Note ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+      </ul>
+    </div>
+    <script>
+      function addAnime() {
+        const input = document.getElementById("anime-title");
+        const title = input.value.trim();
+        if (title !== "") {
+          const list = document.getElementById("watched-list");
+          const li = document.createElement("li");
+          li.textContent = title + " ";
+          // Add delete button
+          const btn = document.createElement("button");
+          btn.textContent = "Видалити";
+          btn.style.marginLeft = "10px";
+          btn.style.background = "#333";
+          btn.style.color = "#fff";
+          btn.style.border = "none";
+          btn.style.borderRadius = "4px";
+          btn.style.cursor = "pointer";
+          btn.onclick = function() { removeAnime(btn); };
+          li.appendChild(btn);
+          list.appendChild(li);
+          input.value = "";
+
+          // Save to localStorage
+          let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+          stored.push(title);
+          localStorage.setItem("watchedAnime", JSON.stringify(stored));
+        }
+      }
+
+      function removeAnime(btn) {
+        const li = btn.parentElement;
+        const title = li.firstChild.textContent.trim();
+        li.remove();
+        // Remove from localStorage
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        stored = stored.filter(item => item !== title);
+        localStorage.setItem("watchedAnime", JSON.stringify(stored));
+      }
+
+      // Restore list from localStorage on page load
+      window.addEventListener("DOMContentLoaded", function() {
+        const list = document.getElementById("watched-list");
+        // Remove initial hardcoded items except if localStorage is empty
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        if (stored.length > 0) {
+          list.innerHTML = "";
+          stored.forEach(function(title) {
+            const li = document.createElement("li");
+            li.textContent = title + " ";
+            const btn = document.createElement("button");
+            btn.textContent = "Видалити";
+            btn.style.marginLeft = "10px";
+            btn.style.background = "#333";
+            btn.style.color = "#fff";
+            btn.style.border = "none";
+            btn.style.borderRadius = "4px";
+            btn.style.cursor = "pointer";
+            btn.onclick = function() { removeAnime(btn); };
+            li.appendChild(btn);
+            list.appendChild(li);
+          });
+        } else {
+          // Add delete buttons to initial hardcoded items
+          Array.from(list.children).forEach(function(li) {
+            if (!li.querySelector("button")) {
+              const btn = document.createElement("button");
+              btn.textContent = "Видалити";
+              btn.style.marginLeft = "10px";
+              btn.style.background = "#333";
+              btn.style.color = "#fff";
+              btn.style.border = "none";
+              btn.style.borderRadius = "4px";
+              btn.style.cursor = "pointer";
+              btn.onclick = function() { removeAnime(btn); };
+              li.appendChild(btn);
+            }
+          });
+        }
+      });
+    </script>
+
+//Улюблені герої
+  <div class="section-block">
+      <h3>💖 Улюблені герої</h3>
+      <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" id="anime-title" placeholder="Додати аніме..." style="flex:1; padding:6px; border-radius:6px; border:1px solid #333; background:#222; color:#fff;">
+        <button onclick="addAnime()" style="background:crimson; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Додати</button>
+      </div>
+      <ul id="watched-list">
+        <li>Naruto ★★★★★ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Attack On Titan ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+        <li>Death Note ★★★★☆ <button onclick="removeAnime(this)" style="margin-left:10px;background:#333;color:#fff;border:none;border-radius:4px;cursor:pointer;">Видалити</button></li>
+      </ul>
+    </div>
+    <script>
+      function addAnime() {
+        const input = document.getElementById("anime-title");
+        const title = input.value.trim();
+        if (title !== "") {
+          const list = document.getElementById("watched-list");
+          const li = document.createElement("li");
+          li.textContent = title + " ";
+          // Add delete button
+          const btn = document.createElement("button");
+          btn.textContent = "Видалити";
+          btn.style.marginLeft = "10px";
+          btn.style.background = "#333";
+          btn.style.color = "#fff";
+          btn.style.border = "none";
+          btn.style.borderRadius = "4px";
+          btn.style.cursor = "pointer";
+          btn.onclick = function() { removeAnime(btn); };
+          li.appendChild(btn);
+          list.appendChild(li);
+          input.value = "";
+
+          // Save to localStorage
+          let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+          stored.push(title);
+          localStorage.setItem("watchedAnime", JSON.stringify(stored));
+        }
+      }
+
+      function removeAnime(btn) {
+        const li = btn.parentElement;
+        const title = li.firstChild.textContent.trim();
+        li.remove();
+        // Remove from localStorage
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        stored = stored.filter(item => item !== title);
+        localStorage.setItem("watchedAnime", JSON.stringify(stored));
+      }
+
+      // Restore list from localStorage on page load
+      window.addEventListener("DOMContentLoaded", function() {
+        const list = document.getElementById("watched-list");
+        // Remove initial hardcoded items except if localStorage is empty
+        let stored = JSON.parse(localStorage.getItem("watchedAnime")) || [];
+        if (stored.length > 0) {
+          list.innerHTML = "";
+          stored.forEach(function(title) {
+            const li = document.createElement("li");
+            li.textContent = title + " ";
+            const btn = document.createElement("button");
+            btn.textContent = "Видалити";
+            btn.style.marginLeft = "10px";
+            btn.style.background = "#333";
+            btn.style.color = "#fff";
+            btn.style.border = "none";
+            btn.style.borderRadius = "4px";
+            btn.style.cursor = "pointer";
+            btn.onclick = function() { removeAnime(btn); };
+            li.appendChild(btn);
+            list.appendChild(li);
+          });
+        } else {
+          // Add delete buttons to initial hardcoded items
+          Array.from(list.children).forEach(function(li) {
+            if (!li.querySelector("button")) {
+              const btn = document.createElement("button");
+              btn.textContent = "Видалити";
+              btn.style.marginLeft = "10px";
+              btn.style.background = "#333";
+              btn.style.color = "#fff";
+              btn.style.border = "none";
+              btn.style.borderRadius = "4px";
+              btn.style.cursor = "pointer";
+              btn.onclick = function() { removeAnime(btn); };
+              li.appendChild(btn);
+            }
+          });
+        }
+      });
+    </script>

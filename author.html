@@ -75,97 +75,234 @@
             margin-top: 8px;
             font-style: italic;
         }
-        .comanda7-block {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 30px;
-        margin-left: 50px;
-        padding-left: 150px;
+        .search-button {
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
         }
 
-        .comanda7-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
-        }
-
-        .comanda7-block .text {
+        .anime-catalog {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
         color: white;
-        max-width: 500px;
+        padding: 10px 40px 10px 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        top: 40px;
+        z-index: 100;
+        min-width: 220px;
+        max-width: 320px;
         text-align: left;
-        font-size: 24px;
-        }
-        .comanda72-block {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        gap: 30px;
-        margin-right: 50px;
-        padding-right: 150px;
+        transition: opacity 0.2s;
         }
 
-        .comanda72-block img {
-        width: 400px;
-        height: auto;
-        border-radius: 10px;
+        .anime-catalog ul {
+          margin: 0;
+          padding: 0;
+        }
+        .anime-catalog li {
+          padding: 8px 0 8px 0;
+          border-bottom: 1.5px solid crimson;
+          list-style: none;
+          word-break: break-word;
+          text-align: center;
+        }
+        .anime-catalog li:last-child {
+          border-bottom: none;
         }
 
-        .comanda72-block .text {
-        color: white;
-        max-width: 500px;
-        text-align: left;
-        font-size: 24px;
+        .site-nav {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .site-nav .search-anime-wrapper {
+          position: relative;
+          display: inline-block;
         }
     </style>
 </head>
 <body>
     <header class="site-header">
-        <h1>🌸 Anime Portal</h1>
-        <nav class="site-nav">
-            <a href="naruto.html">Naruto</a>
-            <a href="fairytail.html">Fairy Tail</a>
-            <a href="aot.html">Atack On Titan</a>
-            <a href="sotte.html">Saga Of Tanya The Evil</a>
-            <a href="index.html">Main Page</a>
-        </nav>
-    </header>
-
-    <div id="login-block" style="margin-top:40px;">
-        <h2 style="color:rgb(216,135,135);">Авторизація</h2>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 350px; margin: 0 auto;">
-            <input type="text" id="username" placeholder="Логін"
-                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; border: 1px solid #ccc;">
-            <input type="password" id="password" placeholder="Пароль"
-                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; border: 1px solid #ccc;">
-            <button onclick="login()"
-                style="width: 100%; padding: 16px; font-size: 22px; border-radius: 8px; background: rgb(216,135,135); color: white; border: none; cursor: pointer;">
-                Увійти
-            </button>
-            <p id="login-message" style="color: crimson; font-size: 20px;"></p>
-        </div>
+        <h1>⛩ Anime Portal</h1>
+  <nav class="site-nav">
+    <div class="search-anime-wrapper">
+      <a href="#" class="search-button" id="search-anime-btn" tabindex="0" onclick="toggleAnimeCatalog(event)">Search anime</a>
+      <div class="anime-catalog" id="anime-catalog-list" tabindex="0">
+        <ul>
+            <li><a href="naruto.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Naruto</a></li>
+            <li><a href="fairytail.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Fairy Tail</a></li>
+            <li><a href="aot.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Attack On Titan</a></li>
+            <li><a href="sotte.html" style="color:white;text-decoration:none;display:inline-block;max-width:100%;">Saga Of Tanya The Evil</a></li>
+        </ul>
+      </div>
     </div>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+<main id="profile-main">
+</main>
+<script>
+function getUser() {
+  return JSON.parse(localStorage.getItem('animeUser'));
+}
 
-    <div id="auth-content" style="display:none; margin-top:30px;">
-        <h3 style="color:lightgreen;">Вітаємо, ви авторизовані!</h3>
-        <p style="color:white;">Тут може бути контент для розробників.</p>
+function setUser(user) {
+  localStorage.setItem('animeUser', JSON.stringify(user));
+}
+
+function clearUser() {
+  localStorage.removeItem('animeUser');
+}
+
+
+
+function renderLoginForm() {
+  const main = document.getElementById('profile-main');
+  main.innerHTML = `
+    <h2 style="color:crimson;">Authorization</h2>
+    <form id="login-form" autocomplete="off" style="margin:20px auto;max-width:350px;">
+      <input type="text" name="username" placeholder="Username" required style="width:100%;margin-bottom:10px;padding:8px;">
+      <input type="password" name="password" placeholder="Password" required style="width:100%;margin-bottom:10px;padding:8px;">
+      <button type="submit" style="width:100%;padding:10px;background:crimson;color:white;border:none;border-radius:5px;font-size:18px;">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#" id="to-register" style="color:crimson;">Register</a></p>
+  `;
+  document.getElementById('login-form').onsubmit = function(e) {
+    e.preventDefault();
+    const username = this.username.value.trim();
+    const password = this.password.value;
+    const user = getUser();
+    if (user && user.username === username && user.password === password) {
+      setUser({username, password, loggedIn: true});
+      renderProfilePage();
+    } else {
+      alert('Incorrect username or password!');
+    }
+  };
+  document.getElementById('to-register').onclick = function(e) {
+    e.preventDefault();
+    clearUser();
+    renderProfilePage();
+  };
+}
+
+// Initial render
+renderProfilePage();
+</script>
+</header>
+<main id="profile-main" style="margin-top:40px;">
+  <div id="profile-content"></div>
+</main>
+<script>
+// User profile logic with a single form area (no duplicate forms)
+function getUser() {
+  return JSON.parse(localStorage.getItem('animeUser'));
+}
+
+function setUser(user) {
+  localStorage.setItem('animeUser', JSON.stringify(user));
+}
+
+function clearUser() {
+  localStorage.removeItem('animeUser');
+}
+
+function renderProfile() {
+  const content = document.getElementById('profile-content');
+  const user = getUser();
+  // Show registration if no user
+  if (!user) {
+    content.innerHTML = `
+      <h2 style="color:crimson;">Registration</h2>
+      <form id="register-form" style="margin:20px auto;max-width:320px;">
+        <input type="text" id="reg-username" placeholder="Username" required style="width:100%;padding:8px;margin-bottom:10px;">
+        <input type="password" id="reg-password" placeholder="Password" required style="width:100%;padding:8px;margin-bottom:10px;">
+        <button type="submit" style="width:100%;padding:10px;background:crimson;color:white;border:none;border-radius:5px;font-weight:bold;">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" id="to-login" style="color:crimson;">Login</a></p>
+    `;
+    document.getElementById('register-form').onsubmit = function(e) {
+      e.preventDefault();
+      const username = document.getElementById('reg-username').value.trim();
+      const password = document.getElementById('reg-password').value;
+      if (username && password) {
+        setUser({username, password, loggedIn: true});
+        renderProfile();
+      } else {
+        alert('Please enter username and password!');
+      }
+    };
+    document.getElementById('to-login').onclick = function(e) {
+      e.preventDefault();
+      renderLoginForm();
+    };
+    return;
+  }
+  // Show login if not logged in
+  if (!user.loggedIn) {
+    renderLoginForm();
+    return;
+  }
+  // Show profile if logged in
+  content.innerHTML = `
+    <h2 style="color:crimson;">Welcome, ${user.username}!</h2>
+    <p style="color:white;">This is your anime portal profile.</p>
+    <div style="margin:20px auto;max-width:350px;background:#181818;padding:20px 0 10px 0;border-radius:10px;">
+      <p style="color:crimson;font-weight:bold;">Profile data:</p>
+      <ul style="list-style:none;padding:0;color:white;font-size:18px;">
+        <li><b>Username:</b> ${user.username}</li>
+      </ul>
     </div>
+    <button id="logout-btn" style="margin-top:20px;padding:10px 30px;background:gray;color:white;border:none;border-radius:5px;font-weight:bold;">Log Out</button>
+  `;
+  document.getElementById('logout-btn').onclick = function() {
+    if (loginSuccess) {
+  window.location.href = 'profile.html';
+}
+}
 
-    <script>
-        function login() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            if ((user === 'admin1' && pass === '1234') ||
-                (user === 'admin2' && pass === '1263')) {
-                document.getElementById('login-message').style.color = 'green';
-                document.getElementById('login-message').textContent = 'Вхід успішний!';
-                document.getElementById('login-block').style.display = 'none';
-                document.getElementById('auth-content').style.display = 'block';
-            } else {
-                document.getElementById('login-message').style.color = 'crimson';
-                document.getElementById('login-message').textContent = 'Невірний логін або пароль!';
-            }
-        }
-    </script>
+function renderLoginForm() {
+  const content = document.getElementById('profile-content');
+  const user = getUser();
+  content.innerHTML = `
+    <h2 style="color:crimson;">Authorization</h2>
+    <form id="login-form" style="margin:20px auto;max-width:320px;">
+      <input type="text" id="login-username" placeholder="Username" required style="width:100%;padding:8px;margin-bottom:10px;">
+      <input type="password" id="login-password" placeholder="Password" required style="width:100%;padding:8px;margin-bottom:10px;">
+      <button type="submit" style="width:100%;padding:10px;background:crimson;color:white;border:none;border-radius:5px;font-weight:bold;">Log In</button>
+    </form>
+    <p>Don't have an account? <a href="#" id="to-register" style="color:crimson;">Register</a></p>
+  `;
+  document.getElementById('login-form').onsubmit = function(e) {
+    e.preventDefault();
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+    if (!user) {
+      alert('Спочатку зареєструйтесь!');
+      return;
+    }
+    if (user.username === username && user.password === password) {
+      setUser({username, password, loggedIn: true});
+      renderProfile();
+    } else {
+      alert('Incorrect username or password!');
+    }
+  };
+  document.getElementById('to-register').onclick = function(e) {
+    e.preventDefault();
+    clearUser();
+    renderProfile();
+  };
+}
+
+window.onload = renderProfile;
+</script>
+</body>
+</html>
 </body>
 </html>
